@@ -23,11 +23,11 @@ import com.toly1994.composeunit.models.WidgetModel
 import com.toly1994.composeunit.user.UnitUserPage
 
 @Composable
-fun UnitNavigation() {
+fun UnitNavigation( onShare: (String) -> Unit) {
     val topNavCtrl = rememberNavController()
     NavHost(
         navController = topNavCtrl,
-        startDestination = UnitRoute.homeNav
+        startDestination = UnitRoute.splash
     ) {
         composable(UnitRoute.splash) { UnitSplash() }
         composable(UnitRoute.homeNav) { UnitHomeNavigation(topNavCtrl) }
@@ -38,12 +38,12 @@ fun UnitNavigation() {
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getInt("widgetId");
             val name = backStackEntry.arguments?.getString("widgetName")
-            WidgetDetail(widgetId = id, widgetName = name) {
+            WidgetDetail(widgetId = id, widgetName = name, onShare) {
                 topNavCtrl.popBackStack()
             }
         }
     }
-//    delayToHome(topNavCtrl)
+    delayToHome(topNavCtrl)
 }
 
 private fun delayToHome(topNavCtrl: NavHostController, duration: Long = 1000) {
@@ -57,9 +57,7 @@ private fun delayToHome(topNavCtrl: NavHostController, duration: Long = 1000) {
 }
 
 @Composable
-fun UnitHomeNavigation(
-    topNavCtrl: NavHostController,
-) {
+fun UnitHomeNavigation(topNavCtrl: NavHostController, ) {
     val navCtrl = rememberNavController()
     val navEntry = navCtrl.currentBackStackEntryAsState()
     val currentRout: String? = navEntry.value?.destination?.route

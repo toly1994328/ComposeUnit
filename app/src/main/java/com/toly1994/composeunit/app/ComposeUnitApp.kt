@@ -8,10 +8,16 @@ import com.toly1994.composeunit.app.navigation.UnitHomeNavigation
 import com.toly1994.composeunit.app.navigation.UnitNavigation
 import com.toly1994.composeunit.app.navigation.UnitRoute
 import com.toly1994.composeunit.details.WidgetDetail
+import com.toly1994.composeunit.widgets.Text.TextNode1
 
 @Composable
-fun ComposeUnitApp() {
-    UnitNavigation()
+fun ComposeUnitApp(
+    onShare: (String) -> Unit,
+) {
+//    UnitNavigation(onShare)
+    WidgetDetail(widgetId = 1, widgetName = "",onShare=onShare) {
+
+    }
 }
 
 

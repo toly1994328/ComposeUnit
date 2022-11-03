@@ -6,6 +6,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.toly1994.composeunit.R
 
 object UnitRoute {
     const val homeNav = "HomeNav"
@@ -40,6 +41,35 @@ object RouterRes {
             text = "我的",
         ),
     )
+
+    val userMenuData = listOf(
+        MenuItemData(
+            resImg = R.mipmap.icon_app_setting,
+            text = "设置中心"
+        ),
+        MenuItemData(
+            resImg = R.mipmap.icon_data,
+            text = "数据管理"
+        ),
+        MenuItemData(
+            resImg = R.mipmap.icon_colloct,
+            text = "我的收藏"
+        ),
+        MenuItemData(),
+        MenuItemData(
+            resImg = R.mipmap.icon_version,
+            text = "版本信息"
+        ),
+        MenuItemData(
+            resImg = R.mipmap.icon_about,
+            text = "关于应用"
+        ),
+        MenuItemData(),
+        MenuItemData(
+            resImg = R.mipmap.icon_kafi,
+            text = "联系本王"
+        )
+    )
 }
 
 data class BottomNavData(
@@ -48,3 +78,8 @@ data class BottomNavData(
     val text: String
 )
 
+data class MenuItemData(
+    val route: String? = null,
+    val resImg: Int?=null,
+    val text: String = ""
+)

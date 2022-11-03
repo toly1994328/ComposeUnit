@@ -1,7 +1,7 @@
 package com.toly1994.composeunit.models
 
 data class WidgetModel(
-    val id: Long,
+    val id: Int,
     val name: String,
     val nameCN: String,
     val info: String,
