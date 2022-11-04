@@ -20,16 +20,16 @@ object MemoryWidgetDataStore {
             lever = 5,
             family = "无内容组件",
             collectd = true,
-            info = "用于显示一张图片，可以从资源文件中加载。可以指定适应方式、当前模式、颜色混合模式、透明度等属性。"
+            info = "用于显示一张图片，可以从资源文件中加载。可以指定适应方式、对齐模式、颜色混合模式、透明度等属性。"
         ),
         WidgetModel(
             id = 3,
-            name = "Column",
-            nameCN = "列布局组件",
-            lever = 5,
-            family = "多内容组件",
+            name = "Icon",
+            nameCN = "图标组件",
+            lever = 3,
+            family = "无内容组件",
             collectd = false,
-            info = "排布方向为竖向的布局，可容纳多个组件，可以通过属性控制排布的对齐方式。"
+            info = "用于图标显示的组件。可指定图标资源、颜色。非常简单，但是非常用。"
         ),
         WidgetModel(
             id = 4,
@@ -42,6 +42,15 @@ object MemoryWidgetDataStore {
         ),
         WidgetModel(
             id = 5,
+            name = "Column",
+            nameCN = "列布局组件",
+            lever = 5,
+            family = "多内容组件",
+            collectd = false,
+            info = "排布方向为竖向的布局，可容纳多个组件，可以通过属性控制排布的对齐方式。"
+        ),
+        WidgetModel(
+            id = 6,
             name = "Box",
             nameCN = "叠放盒组件",
             lever = 5,
@@ -49,6 +58,7 @@ object MemoryWidgetDataStore {
             collectd = true,
             info = "可容纳多个组件，堆叠排放，可以通过属性控制排布的对齐方式等属性。"
         ),
+
         WidgetModel(
             id = 6,
             name = "Scaffold",
@@ -75,15 +85,6 @@ object MemoryWidgetDataStore {
             family = "单内容组件",
             collectd = true,
             info = "Material 风格，一般用于Scaffold中，可摆放在特定位置。可盛放一个子组件,接收点击、可定义颜色、形状等。"
-        ),
-        WidgetModel(
-            id = 9,
-            name = "Icon",
-            nameCN = "图标组件",
-            lever = 3,
-            family = "无内容组件",
-            collectd = false,
-            info = "用于图标显示的组件。可指定图标资源、颜色。非常简单，但是非常用。"
         ),
         WidgetModel(
             id = 10,
