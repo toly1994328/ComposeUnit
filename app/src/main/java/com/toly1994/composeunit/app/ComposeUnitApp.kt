@@ -9,7 +9,7 @@ fun ComposeUnitApp(
     onShare: (String) -> Unit,
 ) {
 //    UnitNavigation(onShare)
-    WidgetDetail(widgetId = 6, widgetName = "", onShare = onShare) {
+    WidgetDetail(widgetId = 5, widgetName = "", onShare = onShare) {
 
     }
 }

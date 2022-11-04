@@ -32,9 +32,9 @@ fun RowNode3() {
         Modifier.width(250.dp).height(100.dp).background(Color(0xffEFEFEF)),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[0]))
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[1]).weight(1f))
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[2]).weight(2f))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[0]))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[1]).weight(1f))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[2]).weight(2f))
     }
 }
 

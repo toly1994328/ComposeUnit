@@ -487,9 +487,9 @@ fun RowNode3() {
         Modifier.width(250.dp).height(100.dp).background(Color(0xffEFEFEF)),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[0]))
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[1]).weight(1f))
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[2]).weight(2f))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[0]))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[1]).weight(1f))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[2]).weight(2f))
     }
 }"""
 
@@ -601,17 +601,56 @@ fun ColumnNode3() {
         Modifier.width(250.dp).height(100.dp).background(Color(0xffEFEFEF)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[0]))
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[1]).weight(1f))
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[2]).weight(2f))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[0]))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[1]).weight(1f))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[2]).weight(2f))
     }
 }"""
 
 const val ColumnNode3Info =
 """Modifier 的 weight 属性只能用于 Row 和 Column 中，该案例里蓝色和绿色区域高度占比 1:2，且无视盒自身高度，使 Column 区域竖向占满。"""
 
+const val BoxNode1Code =
+"""@Composable
+fun BoxNode1() {
+    val colors = arrayOf(Color.Red, Color.Yellow , Color.Blue, Color.Green)
+    Box(
+        Modifier.width(250.dp).height(100.dp).background(Color(0xffEFEFEF)),
+        contentAlignment = Alignment.Center
+    ) {
+        Spacer(Modifier.width(60.dp).height(60.dp).background(colors[3]))
+        Spacer(Modifier.width(50.dp).height(50.dp).background(colors[2]))
+        Spacer(Modifier.width(40.dp).height(40.dp).background(colors[1]))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[0]))
+    }
+}"""
+
+const val BoxNode1Info =
+"""【contentAlignment】 : 内容对齐模式  【Alignment】
+【content】: 内容组件列表   【@Composable BoxScope.() -> Unit】"""
+
+const val BoxNode2Code =
+"""@Composable
+fun BoxNode2() {
+    val colors = arrayOf(Color.Red, Color.Yellow , Color.Blue, Color.Green)
+    Box(
+        Modifier.width(250.dp).height(100.dp).background(Color(0xffEFEFEF)),
+        contentAlignment = Alignment.BottomCenter
+    ) {
+        Spacer(Modifier.width(60.dp).height(60.dp).background(colors[3]))
+        Spacer(Modifier.width(50.dp).height(50.dp).background(colors[2]))
+        Spacer(Modifier.width(40.dp).height(40.dp).background(colors[1]))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[0])
+            .align(Alignment.TopEnd))
+    }
+}"""
+
+const val BoxNode2Info =
+"""BoxScope 中定义了 Modifier.align，通过它可以修改某一组件的对齐方式。本案例中内容底部居中，红色组件在右上方。"""
+
+
 const val Code =
-""""""
+    """"""
 
 const val Info =
-""""""
+    """"""

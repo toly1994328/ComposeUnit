@@ -109,9 +109,15 @@ object MemoryNodeDataStore {
         //==== Box ==========
         NodeModel(
             widgetId = 6,
-            name = "列中的组件高度占比",
-            code = ColumnNode3Code,
-            info = ColumnNode3Info
+            name = "Box 的对齐方式",
+            code = BoxNode1Code,
+            info = BoxNode1Info
+        ),
+        NodeModel(
+            widgetId = 6,
+            name = "修改单个子组件的对齐方式",
+            code = BoxNode2Code,
+            info = BoxNode2Info
         ),
     )
 }

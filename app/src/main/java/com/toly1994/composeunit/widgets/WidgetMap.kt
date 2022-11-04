@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.toly1994.composeunit.widgets.Box.BoxNode1
+import com.toly1994.composeunit.widgets.Box.BoxNode2
 import com.toly1994.composeunit.widgets.Column.ColumnNode1
 import com.toly1994.composeunit.widgets.Column.ColumnNode2
 import com.toly1994.composeunit.widgets.Column.ColumnNode3
@@ -43,6 +44,7 @@ fun WidgetNodeMap(widgetId: Int, index: Int) {
     if (widgetId == 5 && index == 1) ColumnNode2()
     if (widgetId == 5 && index == 2) Center { ColumnNode3() }
     if (widgetId == 6 && index == 0) Center { BoxNode1() }
+    if (widgetId == 6 && index == 1) Center { BoxNode2() }
 }
 
 @Composable

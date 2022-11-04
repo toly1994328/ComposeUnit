@@ -21,9 +21,9 @@ import com.toly1994.composeunit.R
 import com.toly1994.composeunit.widgets.Image.ImageContentScaleItem
 
 // "widgetId": 6,
-// "name": "列的竖直对齐模式",
+// "name": "Box 的对齐方式",
 // "subtitle":
-//     【contentAlignment】 : 竖直对齐模式  【Alignment】
+//     【contentAlignment】 : 内容对齐模式  【Alignment】
 //     【content】: 内容组件列表   【@Composable BoxScope.() -> Unit】
 
 @SuppressLint("SuspiciousIndentation")
@@ -34,10 +34,10 @@ fun BoxNode1() {
         Modifier.width(250.dp).height(100.dp).background(Color(0xffEFEFEF)),
         contentAlignment = Alignment.Center
     ) {
-        Spacer(modifier = Modifier.width(60.dp).height(60.dp).background(colors[3]))
-        Spacer(modifier = Modifier.width(50.dp).height(50.dp).background(colors[2]))
-        Spacer(modifier = Modifier.width(40.dp).height(40.dp).background(colors[1]))
-        Spacer(modifier = Modifier.width(30.dp).height(30.dp).background(colors[0]))
+        Spacer(Modifier.width(60.dp).height(60.dp).background(colors[3]))
+        Spacer(Modifier.width(50.dp).height(50.dp).background(colors[2]))
+        Spacer(Modifier.width(40.dp).height(40.dp).background(colors[1]))
+        Spacer(Modifier.width(30.dp).height(30.dp).background(colors[0]))
     }
 }
 

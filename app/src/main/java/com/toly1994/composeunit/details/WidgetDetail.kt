@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -142,7 +143,8 @@ fun NodeWidgetPanel(model: WidgetModel) {
 
 @Composable
 fun NodeItem(model: NodeModel,index:Int, onShare: (String) -> Unit?) {
-    val expend: MutableState<Boolean> = remember { mutableStateOf(false) }
+//    val expend: MutableState<Boolean> = remember { mutableStateOf(false) }
+    val expend: MutableState<Boolean> = rememberSaveable { mutableStateOf(false) }
     Column {
         NodeTitle(name = model.name,
             expend = expend.value,
