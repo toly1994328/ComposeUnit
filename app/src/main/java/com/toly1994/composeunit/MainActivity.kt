@@ -5,19 +5,20 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
+import androidx.core.view.WindowCompat
 import androidx.room.Room
 import com.toly1994.composeunit.app.ComposeUnitApp
+import com.toly1994.composeunit.layouts.counter.CountViewModel
 import com.toly1994.composeunit.repository.database.ComposeUnitDB
 import com.toly1994.composeunit.repository.database.entity.WidgetPo
 import com.toly1994.composeunit.repository.memory.MemoryWidgetDataStore
 
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val db = Room.databaseBuilder(this,ComposeUnitDB::class.java,"compose_unit").allowMainThreadQueries().build()
-        db.widgetDao().insertAll(MemoryWidgetDataStore.allWidget.first().toPo())
         setContent {
             ComposeUnitApp(
                 onShare = {

@@ -4,5 +4,7 @@ import com.toly1994.composeunit.models.WidgetModel
 import kotlinx.coroutines.flow.Flow
 
 interface WidgetRepository {
-    fun getAllWidget(): Flow<List<WidgetModel>>
+    fun queryAllWidget(): Flow<List<WidgetModel>>
+
+    fun searchWidget(arg:String): Flow<List<WidgetModel>>
 }

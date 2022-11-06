@@ -58,9 +58,44 @@ object MemoryWidgetDataStore {
             collectd = true,
             info = "可容纳多个组件，堆叠排放，可以通过属性控制排布的对齐方式等属性。"
         ),
-
         WidgetModel(
-            id = 6,
+            id = 7,
+            name = "LazyColumn",
+            nameCN = "延迟纵向列表",
+            lever = 5,
+            family = "多内容组件",
+            collectd = true,
+            info = "具有懒加载条目功能的纵向列表，支持纵向滑动处理，是非常常用的列表组件。"
+        ),
+        WidgetModel(
+            id = 8,
+            name = "LazyRow",
+            nameCN = "延迟横向列表",
+            lever = 4,
+            family = "多内容组件",
+            collectd = true,
+            info = "与 LazyColumn 相对应，具有懒加载条目功能的横向列表，支持横向滑动处理。"
+        ),
+        WidgetModel(
+            id = 9,
+            name = "LazyVerticalGrid",
+            nameCN = "延迟纵向网格",
+            lever = 5,
+            family = "多内容组件",
+            collectd = true,
+            info = "具有懒加载条目功能的纵向网格布局，支持纵向滑动处理，是非常常用的网格组件。"
+        ),
+        WidgetModel(
+            id = 10,
+            name = "LazyHorizontalGrid",
+            nameCN = "延迟横向网格",
+            lever = 5,
+            family = "多内容组件",
+            collectd = true,
+            info = "与 LazyHorizontalGrid 相对应，具有懒加载条目功能的横向网格布局，支持横向滑动处理。"
+        ),
+        WidgetModel(
+            id = 11,
             name = "Scaffold",
             nameCN = "脚手架组件",
             lever = 4,
@@ -69,7 +104,7 @@ object MemoryWidgetDataStore {
             info = "一个通用 app 结构，包括上、下、左、右、中、浮动按钮部位，对应位置可盛放组件。"
         ),
         WidgetModel(
-            id = 7,
+            id = 12,
             name = "AppTopBar",
             nameCN = "应用头部栏",
             lever = 4,
@@ -78,7 +113,7 @@ object MemoryWidgetDataStore {
             info = "一个应用顶部栏的通用结构，可在指定的部位放置相应的组件，常用于Scaffold组件中。"
         ),
         WidgetModel(
-            id = 8,
+            id = 13,
             name = "FloatingActionButton",
             nameCN = "浮动按钮",
             lever = 3,
@@ -87,7 +122,7 @@ object MemoryWidgetDataStore {
             info = "Material 风格，一般用于Scaffold中，可摆放在特定位置。可盛放一个子组件,接收点击、可定义颜色、形状等。"
         ),
         WidgetModel(
-            id = 10,
+            id = 14,
             name = "Spacer",
             nameCN = "占位组件",
             lever = 4,
@@ -96,7 +131,7 @@ object MemoryWidgetDataStore {
             info = "只有 modifier 参数的组件，一般用于占位场景。"
         ),
         WidgetModel(
-            id = 11,
+            id = 15,
             name = "Divider",
             nameCN = "分割线组件",
             lever = 2,

@@ -1,7 +1,7 @@
 package com.toly1994.composeunit.models
 
-import com.toly1994.composeunit.repository.database.entity.PoMap
 import com.toly1994.composeunit.repository.database.entity.WidgetPo
+import com.toly1994.composeunit.repository.database.entity.WidgetPoMap
 
 data class WidgetModel(
     val id: Int,
@@ -13,9 +13,10 @@ data class WidgetModel(
     val collectd: Boolean,
 ) {
     fun toPo(): WidgetPo {
-        val collectd = if (this.collectd) 1 else 0;
+        val collectdValue = WidgetPoMap.widgetCollectdMap[collectd]!!
+        val familyValue = WidgetPoMap.widgetFamilyMap[family]!!
         return WidgetPo(
-            id, name, nameCN, info, lever, collectd, PoMap.familyMap2[family],
+            id, name, nameCN, info, lever, collectdValue, familyValue,
         )
     }
 }

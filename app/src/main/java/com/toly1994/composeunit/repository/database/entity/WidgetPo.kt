@@ -3,6 +3,7 @@ package com.toly1994.composeunit.repository.database.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.toly1994.composeunit.models.WidgetModel
 
 @Entity(tableName = "widget")
 data class WidgetPo(
@@ -17,19 +18,26 @@ data class WidgetPo(
     @ColumnInfo
     val lever: Int,
     @ColumnInfo
-    val collectd: Int, // 收藏 0  未收藏 1
+    val collectd: Int, // 对应关系见 [PoMap#widgetCollectdMap]
     @ColumnInfo
-    val family: Int?, // 对应关系见 [PoMap#familyMap]
-)
+    val family: Int, // 对应关系见 [PoMap#widgetFamilyMap]
+){
+    fun toModel(): WidgetModel {
+        val collectdValue = WidgetPoMap.widgetCollectdMap.keys.toList()[collectd]
+        val familyValue = WidgetPoMap.widgetFamilyMap.keys.toList()[family]
+        return WidgetModel(
+            id, name, nameCN, info, familyValue,lever, collectdValue,
+        )
+    }
+}
 
-object PoMap {
-    val familyMap = mapOf(
-        0 to "无内容组件",
-        1 to "单内容组件",
-        2 to "多内容组件",
-        3 to "卡槽型组件",
+object WidgetPoMap {
+    // // 收藏 0  未收藏 1
+    val widgetCollectdMap = mapOf(
+        false  to 0,
+        true  to 1,
     )
-    val familyMap2 = mapOf(
+    val widgetFamilyMap = mapOf(
        "无内容组件"  to 0,
        "单内容组件"  to 1,
        "多内容组件"  to 2,

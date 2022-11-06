@@ -1,9 +1,7 @@
 package com.toly1994.composeunit.widgets
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +18,10 @@ import com.toly1994.composeunit.widgets.Image.ImageNode1
 import com.toly1994.composeunit.widgets.Image.ImageNode2
 import com.toly1994.composeunit.widgets.Image.ImageNode3
 import com.toly1994.composeunit.widgets.Image.ImageNode4
+import com.toly1994.composeunit.widgets.LazyColumn.LazyColumnNode1
+import com.toly1994.composeunit.widgets.LazyHorizontalGrid.LazyHorizontalGridNode1
+import com.toly1994.composeunit.widgets.LazyRow.LazyRowNode1
+import com.toly1994.composeunit.widgets.LazyVerticalGrid.LazyVerticalGridNode1
 import com.toly1994.composeunit.widgets.Row.RowNode1
 import com.toly1994.composeunit.widgets.Row.RowNode2
 import com.toly1994.composeunit.widgets.Row.RowNode3
@@ -45,6 +47,10 @@ fun WidgetNodeMap(widgetId: Int, index: Int) {
     if (widgetId == 5 && index == 2) Center { ColumnNode3() }
     if (widgetId == 6 && index == 0) Center { BoxNode1() }
     if (widgetId == 6 && index == 1) Center { BoxNode2() }
+    if (widgetId == 7 && index == 0) Center {LazyColumnNode1()}
+    if (widgetId == 8 && index == 0) Center {LazyRowNode1()}
+    if (widgetId == 9 && index == 0) Center {LazyVerticalGridNode1()}
+    if (widgetId == 10 && index == 0) Center { LazyHorizontalGridNode1() }
 }
 
 @Composable
@@ -65,7 +71,7 @@ fun Playground(content: @Composable () -> Unit) {
 @Composable
 fun Center(content: @Composable () -> Unit) {
     Box(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
         contentAlignment = Alignment.Center
     ) {
         content()

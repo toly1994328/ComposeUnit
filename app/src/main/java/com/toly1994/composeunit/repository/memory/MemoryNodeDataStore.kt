@@ -119,5 +119,33 @@ object MemoryNodeDataStore {
             code = BoxNode2Code,
             info = BoxNode2Info
         ),
+        //==== LazyColumn ==========
+        NodeModel(
+            widgetId = 7,
+            name = "延迟纵向列表基本使用",
+            code = LazyColumnNode1Code,
+            info = LazyColumnNode1Info
+        ),
+        //==== LazyColumn ==========
+        NodeModel(
+            widgetId = 8,
+            name = "延迟横向列表基本使用",
+            code = LazyRowNode1Code,
+            info = LazyRowNode1Info
+        ),
+        //==== LazyVerticalGrid ==========
+        NodeModel(
+            widgetId = 9,
+            name = "延迟纵向网格基本使用",
+            code = LazyVerticalGridNode1Code,
+            info = LazyVerticalGridNode1Info
+        ),
+        //==== LazyHorizontalGrid ==========
+        NodeModel(
+            widgetId = 10,
+            name = "延迟横向网格基本使用",
+            code = LazyHorizontalGridNode1Code,
+            info = LazyHorizontalGridNode1Info
+        ),
     )
 }

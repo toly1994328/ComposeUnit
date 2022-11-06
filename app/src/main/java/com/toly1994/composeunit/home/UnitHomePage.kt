@@ -8,8 +8,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.toly1994.composeunit.layouts.UnitWidgetItemV1
 import com.toly1994.composeunit.models.WidgetModel
 import com.toly1994.composeunit.repository.memory.MemoryWidgetDataStore
@@ -31,9 +33,10 @@ fun HomeWidgetList() {
 
 @Composable
 fun HomeLazyWidgetList(
+    viewModel: WidgetViewModel = viewModel(),
     onTapItem: (WidgetModel) -> Unit,
-) {
-    val data = MemoryWidgetDataStore.allWidget;
+    ) {
+    val data = viewModel.uiState.collectAsState().value.models
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(10.dp),
         contentPadding = PaddingValues(top = 10.dp, bottom = 10.dp)

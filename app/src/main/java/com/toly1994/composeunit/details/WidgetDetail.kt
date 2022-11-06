@@ -1,5 +1,6 @@
 package com.toly1994.composeunit.details
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -39,18 +40,15 @@ import com.toly1994.composeunit.repository.memory.MemoryWidgetDataStore
 import com.toly1994.composeunit.widgets.WidgetNodeMap
 
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun WidgetDetail(
-    widgetId: Int?,
-    widgetName: String?,
+    state: NodeModelState,
     onShare: (String) -> Unit,
     back: () -> Unit,
 ) {
-
-    val model = MemoryWidgetDataStore.allWidget
-        .find { it.id == widgetId } ?: return
-
-  val nodes = MemoryNodeDataStore.allNodes.filter { it.widgetId==widgetId }
+  val nodes = state.nodes
+  val model = state.widget!!
     Column {
         TopAppBar(
             navigationIcon = {

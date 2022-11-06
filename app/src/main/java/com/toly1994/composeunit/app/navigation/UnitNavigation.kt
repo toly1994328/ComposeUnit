@@ -5,6 +5,7 @@ import android.os.Looper
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -12,10 +13,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.toly1994.composeunit.app.splash.UnitSplash
+import com.toly1994.composeunit.details.NodeModelState
+import com.toly1994.composeunit.details.NodeViewModel
 import com.toly1994.composeunit.details.WidgetDetail
 import com.toly1994.composeunit.doing.Doing
 import com.toly1994.composeunit.home.HomeLazyWidgetList
@@ -23,22 +27,23 @@ import com.toly1994.composeunit.models.WidgetModel
 import com.toly1994.composeunit.user.UnitUserPage
 
 @Composable
-fun UnitNavigation( onShare: (String) -> Unit) {
+fun UnitNavigation(
+    viewModel : NodeViewModel = viewModel(),
+    onShare: (String) -> Unit) {
     val topNavCtrl = rememberNavController()
     NavHost(
         navController = topNavCtrl,
         startDestination = UnitRoute.splash
     ) {
         composable(UnitRoute.splash) { UnitSplash() }
-        composable(UnitRoute.homeNav) { UnitHomeNavigation(topNavCtrl) }
-        composable(
-            UnitRoute.widgetDetail + "/{widgetId}/{widgetName}",
-            arguments = listOf(navArgument("widgetId") { type = NavType.IntType },
-                navArgument("widgetName") { type = NavType.StringType })
-        ) { backStackEntry ->
-            val id = backStackEntry.arguments?.getInt("widgetId");
-            val name = backStackEntry.arguments?.getString("widgetName")
-            WidgetDetail(widgetId = id, widgetName = name, onShare) {
+        composable(UnitRoute.homeNav) {
+            UnitHomeNavigation{
+                viewModel.handleEnterWidget(it,topNavCtrl)
+            }
+        }
+        composable(UnitRoute.widgetDetail,) {
+            val nodeState  = viewModel.uiState.collectAsState().value
+            WidgetDetail(nodeState, onShare) {
                 topNavCtrl.popBackStack()
             }
         }
@@ -57,7 +62,9 @@ private fun delayToHome(topNavCtrl: NavHostController, duration: Long = 1000) {
 }
 
 @Composable
-fun UnitHomeNavigation(topNavCtrl: NavHostController, ) {
+fun UnitHomeNavigation(
+    toDetail: (WidgetModel) -> Unit,
+    ) {
     val navCtrl = rememberNavController()
     val navEntry = navCtrl.currentBackStackEntryAsState()
     val currentRout: String? = navEntry.value?.destination?.route
@@ -68,9 +75,7 @@ fun UnitHomeNavigation(topNavCtrl: NavHostController, ) {
     }) {
         NavHost(navCtrl, startDestination = UnitRoute.widget, Modifier.padding(it)) {
             composable(UnitRoute.widget) {
-                HomeLazyWidgetList() { model ->
-                    toWidgetDetail(topNavCtrl, model)
-                }
+                HomeLazyWidgetList(onTapItem = toDetail)
             }
             composable(UnitRoute.layout) { Doing(name = "布局集录") }
             composable(UnitRoute.collect) { Doing(name = "收藏集录") }
@@ -112,11 +117,4 @@ private fun navigatorTo(
     }
 }
 
-// 跳转到组件详情页
-private fun toWidgetDetail(
-    navCtrl: NavHostController,
-    model: WidgetModel,
-) {
-    navCtrl.navigate(UnitRoute.widgetDetail + "/${model.id}" + "/${model.name}")
-}
 

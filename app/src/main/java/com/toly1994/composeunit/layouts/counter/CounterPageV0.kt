@@ -1,6 +1,7 @@
 package com.toly1994.composeunit.layouts.counter
 
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.sp
 
 // V0 计数器
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CounterPageV0(title: String) {
     val count: MutableState<Int> = remember { mutableStateOf(0) }

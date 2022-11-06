@@ -649,6 +649,183 @@ const val BoxNode2Info =
 """BoxScope 中定义了 Modifier.align，通过它可以修改某一组件的对齐方式。本案例中内容底部居中，红色组件在右上方。"""
 
 
+const val LazyColumnNode1Code =
+"@Composable\n" +
+        "fun LazyColumnNode1() {\n" +
+        "    val count = 20\n" +
+        "    val step = 256 / count\n" +
+        "    val colors = mutableListOf<Long>()\n" +
+        "    for (index in 0..count) {\n" +
+        "        colors.add(0xffff00ff - index * step)\n" +
+        "    }\n" +
+        "    LazyColumn(\n" +
+        "        modifier = Modifier.padding(horizontal = 20.dp).height(230.dp),\n" +
+        "        userScrollEnabled = true,\n" +
+        "        reverseLayout = false\n" +
+        "    ) {\n" +
+        "        itemsIndexed(colors) { _, value ->\n" +
+        "            Box(modifier = Modifier\n" +
+        "                .background(Color(value))\n" +
+        "                .fillMaxWidth(),\n" +
+        "                contentAlignment = Alignment.Center\n" +
+        "                ){\n" +
+        "                Text(\n" +
+        "                    modifier = Modifier.padding(vertical = 15.dp),\n" +
+        "                    text = \"0x\${value.toHexString()}\",\n" +
+        "                    color = Color.White,\n" +
+        "                    fontSize = 18.sp,\n" +
+        "                    fontWeight = FontWeight.Bold\n" +
+        "                )\n" +
+        "            }\n" +
+        "        }\n" +
+        "    }\n" +
+        "}"
+
+const val LazyColumnNode1Info =
+    """【content】 : 内容  【LazyListScope.() -> Unit】
+【reverseLayout】: 是否反序   【Boolean】
+【contentPadding】: 门边距   【PaddingValues】
+【userScrollEnabled】: 是否允许滑动   【Boolean】
+【horizontalAlignment】: 水平对齐方式   【Alignment.Horizontal】
+【verticalArrangement】: 竖直对齐方式   【Arrangement.Vertical】"""
+
+const val LazyRowNode1Code =
+    """@Composable
+fun LazyRowNode1() {
+    val count = 32
+    val step = 256 / count
+    val colors = mutableListOf<Long>()
+    for (index in 0..count) {
+        colors.add(0xffff00ff - index * step)
+    }
+    LazyRow(
+        modifier = Modifier.padding(horizontal = 20.dp).height(60.dp),
+        userScrollEnabled = true,
+        reverseLayout = false
+    ) {
+        itemsIndexed(colors) { index, value ->
+            Box(modifier = Modifier
+                .background(Color(value))
+                .fillMaxHeight(),
+                contentAlignment = Alignment.Center
+                ){
+                Text(
+                    modifier = Modifier.padding(horizontal = 15.dp),
+                    text = index.toString(),
+                    color = Color.White,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+        }
+    }
+}"""
+
+const val LazyRowNode1Info =
+    """【content】 : 内容  【LazyListScope.() -> Unit】
+【reverseLayout】: 是否反序   【Boolean】
+【contentPadding】: 门边距   【PaddingValues】
+【userScrollEnabled】: 是否允许滑动   【Boolean】
+【horizontalAlignment】: 水平对齐方式   【Alignment.Horizontal】
+【verticalArrangement】: 竖直对齐方式   【Arrangement.Vertical】"""
+
+
+const val LazyVerticalGridNode1Code =
+    "@Composable\n" +
+            "fun LazyVerticalGridNode1() {\n" +
+            "    val count = 64\n" +
+            "    val step = 256 / count\n" +
+            "    val colors = mutableListOf<Long>()\n" +
+            "    for (index in 0..count) {\n" +
+            "        colors.add(0xffff00ff - index * step)\n" +
+            "    }\n" +
+            "    LazyVerticalGrid(\n" +
+            "        modifier = Modifier\n" +
+            "            .padding(horizontal = 20.dp)\n" +
+            "            .height(230.dp),\n" +
+            "        userScrollEnabled = true,\n" +
+            "        reverseLayout = false,\n" +
+            "        columns = GridCells.Fixed(3),\n" +
+            "        verticalArrangement = Arrangement.spacedBy(4.dp),\n" +
+            "        horizontalArrangement = Arrangement.spacedBy(4.dp),\n" +
+            "    ) {\n" +
+            "        items(colors.size,) {\n" +
+            "                index ->\n" +
+            "            Box(\n" +
+            "                modifier = Modifier\n" +
+            "                    .background(Color(colors[index]))\n" +
+            "                    .fillMaxWidth(),\n" +
+            "                contentAlignment = Alignment.Center\n" +
+            "            ) {\n" +
+            "                Text(\n" +
+            "                    modifier = Modifier.padding(vertical = 15.dp),\n" +
+            "                    text = \"0x\${colors[index].toHexString()}\",\n" +
+            "                    color = Color.White,\n" +
+            "                    fontSize = 16.sp,\n" +
+            "                    fontWeight = FontWeight.Bold\n" +
+            "                )\n" +
+            "            }\n" +
+            "        }\n" +
+            "    }\n" +
+            "}"
+
+const val LazyVerticalGridNode1Info =
+    """【content】 : 内容  【LazyListScope.() -> Unit】
+【reverseLayout】: 是否反序   【Boolean】
+【columns】: 单元格配置   【GridCells】
+【contentPadding】: 门边距   【PaddingValues】
+【userScrollEnabled】: 是否允许滑动   【Boolean】
+【horizontalArrangement】: 水平间距   【Arrangement.Horizontal】
+【verticalArrangement】: 竖直间距   【Arrangement.Vertical】"""
+
+const val LazyHorizontalGridNode1Code =
+"@Composable\n" +
+        "fun LazyHorizontalGridNode1() {\n" +
+        "    val count = 64\n" +
+        "    val step = 256 / count\n" +
+        "    val colors = mutableListOf<Long>()\n" +
+        "    for (index in 0..count) {\n" +
+        "        colors.add(0xffff00ff - index * step)\n" +
+        "    }\n" +
+        "    LazyHorizontalGrid(\n" +
+        "        modifier = Modifier\n" +
+        "            .padding(horizontal = 20.dp)\n" +
+        "            .height(230.dp),\n" +
+        "        userScrollEnabled = true,\n" +
+        "        reverseLayout = false,\n" +
+        "        rows = GridCells.Fixed(3),\n" +
+        "        verticalArrangement = Arrangement.spacedBy(4.dp),\n" +
+        "        horizontalArrangement = Arrangement.spacedBy(4.dp),\n" +
+        "    ) {\n" +
+        "        items(colors.size) {\n" +
+        "                index ->\n" +
+        "            Box(\n" +
+        "                modifier = Modifier\n" +
+        "                    .background(Color(colors[index]))\n" +
+        "                    .fillMaxWidth(),\n" +
+        "                contentAlignment = Alignment.Center\n" +
+        "            ) {\n" +
+        "                Text(\n" +
+        "                    modifier = Modifier.padding(horizontal = 15.dp),\n" +
+        "                    text = \"0x\${colors[index].toHexString()}\",\n" +
+        "                    color = Color.White,\n" +
+        "                    fontSize = 16.sp,\n" +
+        "                    fontWeight = FontWeight.Bold\n" +
+        "                )\n" +
+        "            }\n" +
+        "        }\n" +
+        "    }\n" +
+        "}"
+
+const val LazyHorizontalGridNode1Info =
+    """【content】 : 内容  【LazyListScope.() -> Unit】
+【reverseLayout】: 是否反序   【Boolean】
+【rows】: 单元格配置   【GridCells】
+【contentPadding】: 门边距   【PaddingValues】
+【userScrollEnabled】: 是否允许滑动   【Boolean】
+【horizontalArrangement】: 水平间距   【Arrangement.Horizontal】
+【verticalArrangement】: 竖直间距   【Arrangement.Vertical】"""
+
 const val Code =
     """"""
 

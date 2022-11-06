@@ -1,8 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    // 添加kapt注解处理器
-    id 'kotlin-kapt'
+    id 'kotlin-kapt' // 添加 kapt
 }
 
 android {
@@ -49,19 +48,31 @@ android {
 }
 
 dependencies {
-
+    // room 数据库
     def room_version = "2.4.3"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // retrofit 网络请求
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+    // 网络图片
+    implementation "io.coil-kt:coil-compose:2.2.2"
 
     implementation project(":highlight")
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation 'androidx.activity:activity-compose:1.6.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1'
+
+
     implementation "androidx.compose.ui:ui:$compose_ui_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_ui_version"
     implementation 'androidx.compose.material:material:1.3.0'
     implementation "androidx.navigation:navigation-compose:2.5.2"
+
     // 协程核心库
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
     // 协程Android支持库
